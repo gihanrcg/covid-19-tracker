@@ -57,6 +57,14 @@ function LocalDashboard({ dashboardData, image, type }) {
         </Grid>
         <Grid container spacing={1}>
 
+        <Grid item xs>
+            <DashboardCard
+              count={dashboardData.local_active_cases}
+              colorLevel="dark"
+              lastUpdated={dashboardData.update_date_time}
+              cardTitle="Total Active Cases"
+            />
+          </Grid>
           <Grid item xs>
             <DashboardCard
               count={dashboardData.local_new_deaths}

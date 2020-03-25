@@ -1,25 +1,40 @@
-import React, { useEffect } from "react";
+import React, { Component } from 'react';
+import { TwitterTimelineEmbed } from 'react-twitter-embed'
 
-const TwitterContainer = () => {
-  useEffect(() => {
-    const anchor = document.createElement("a");
-    anchor.setAttribute("class", "twitter-timeline");
-    anchor.setAttribute("data-theme", "dark");
-    anchor.setAttribute("data-height", "800");
-    anchor.setAttribute("data-chrome", "noheader nofooter noborders");
-    anchor.setAttribute("href", "https://twitter.com/OPENMIC24x7");
-    document.getElementsByClassName("twitter-embed")[0].appendChild(anchor);
+class TwitterContainer extends Component {
 
-    const script = document.createElement("script");
-    script.setAttribute("src", "https://platform.twitter.com/widgets.js");
-    document.getElementsByClassName("twitter-embed")[0].appendChild(script);
-  }, []);
 
-  return (
-    <section className="twitterContainer">
-      <div className="twitter-embed"></div>
-    </section>
-  );
-};
+
+  constructor(props) {
+    super(props);
+    console.log('prp', this.props);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (!(this.props.source === prevProps.source)) // Check if it's a new user, you can also use some unique property, like the ID  (this.props.user.id !== prevProps.user.id)
+    {
+      console.log('diff')
+      this.render()
+    }
+  }
+  render() {
+
+
+
+    return (
+      <div>
+        <TwitterTimelineEmbed
+          sourceType="profile"
+          screenName={this.props.source}
+          options={{ height: '1000vh' }}
+        />
+      </div>
+    );
+  }
+}
 
 export default TwitterContainer;
+
+
+
+

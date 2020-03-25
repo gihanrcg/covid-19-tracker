@@ -9,6 +9,7 @@ import Navbar from '../shared/Navigation/Navbar';
 import CountryComp from '../OtherCountries/CountryComp';
 import GraphComp from '../Graphs/GraphComp'
 import OtherDashboardItems from './OtherDashboardItems'
+import NewsPage from '../other/NewsPage'
 import {
   Container,
   Paper,
@@ -54,7 +55,7 @@ function Dashboard() {
         <Paper style={{ marginTop: 20 }} />
         <LocalDashboard2 dashboardData={stats.dashboard} type="Global" image="https://i.gifer.com/W31X.gif" />
         <Paper style={{ marginTop: 20 }} />
-        <OtherDashboardItems/>
+        <OtherDashboardItems />
         <div>
           <div className="row">
             <div className="col">
@@ -105,6 +106,9 @@ function Dashboard() {
             </Route>
             <Route path="/graph">
               <GraphComp />
+            </Route>
+            <Route path="/news">
+              <NewsPage />
             </Route>
             <Route path="/">
               {stats.hospitalData.length > 0 ? (

@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import TwitterContainer from '../other/TwitterContainer'
+
 
 class OtherDashboardItems extends Component {
     render() {
         return (
-            <div>
-
-
-                <TwitterContainer />
+            <div>                
                 <br/><br/>
 
                 <div class="small-box bg-light text-light" style={{ padding: '10px' }}>

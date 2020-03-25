@@ -14,6 +14,9 @@ function Navbar() {
             <a className="nav-link text-light" href="/">Home <span className="sr-only">(current)</span></a>
           </li>
           <li className="nav-item active">
+            <a className="nav-link text-light" href="/news">Local News <span className="sr-only"></span></a>
+          </li>
+          <li className="nav-item active">
             <a className="nav-link text-light" href="/hospitaldetails">Hospital Details <span className="sr-only"></span></a>
           </li>
           <li className="nav-item active">
