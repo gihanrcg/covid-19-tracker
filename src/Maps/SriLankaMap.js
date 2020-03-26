@@ -72,10 +72,13 @@ class SriLankaMap extends Component {
             return (<LinearProgress variant="query" />)
         } else {
             return (
-                <div className="small-box bg-light">
+                <div className="small-box bg-light text-center">
 
-                   <br/>
+                    <br /><br />
                     <h5 className="text-center">District Distribution of Reported Cases</h5>
+                    <br />
+                    <p style={{width:'90%',marginLeft:'5%'}} className="text-center text-primary">If you are using a mobile device, please touch on any district to see the information</p>
+
                     <Paper style={{ marginTop: 20 }} />
                     <div className="small-box sea">
                         <div id="pos" className="small-box bg-dark" style={

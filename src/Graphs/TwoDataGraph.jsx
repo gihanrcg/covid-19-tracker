@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Line } from 'react-chartjs-2';
 
-class AllInOne extends Component {
-
+class TwoDataGraph extends Component {
 
     render() {
 
         const options = {
             responsive: true,
+            maintainAspectRatio: false,
             legend: {
                 display: true,
                 labels: {
@@ -17,7 +17,7 @@ class AllInOne extends Component {
             },
             title: {
                 display: true,
-                text: 'All (Cases, Recoveries, Deaths) in One Graph',
+                text: this.props.chartTitle,
                 fontColor: 'black',
                 fontSize: 16
             },
@@ -66,75 +66,52 @@ class AllInOne extends Component {
         }
 
         const data = {
-            labels: this.props.labels,
+            labels: this.props.dates,
             datasets: [
                 {
-                    label: 'Number of Reported Cases over the date',
+                    label: this.props.label1,
                     fill: false,
                     lineTension: 0.4,
                     backgroundColor: 'rgba(255, 255, 255, 1)',
-                    borderColor: 'rgba(204, 14, 4,1)',
+                    borderColor: this.props.color1,
                     borderCapStyle: 'butt',
                     borderDash: [],
                     borderDashOffset: 0.0,
                     borderJoinStyle: 'miter',
-                    pointBorderColor: 'rgba(204, 14, 4,1)',
-                    pointBackgroundColor: 'rgba(204, 14, 4,1)',
+                    pointBorderColor: this.props.color1,
+                    pointBackgroundColor: this.props.color1,
                     pointBorderWidth: 1,
                     pointHoverRadius: 5,
-                    pointHoverBackgroundColor: 'rgba(204, 14, 4,1)',
-                    pointHoverBorderColor: 'rgba(220,220,220,1)',
+                    pointHoverBackgroundColor: this.props.color1,
+                    pointHoverBorderColor: this.props.color1,
                     pointHoverBorderWidth: 2,
                     pointRadius: 1,
                     pointHitRadius: 10,
                     color: 'rgba(255,255,255,1)',
-                    data: this.props.cases,
+                    data: this.props.data1,
 
                 },
                 {
-                    label: 'Number of Deaths over the date',
+                    label: this.props.label2,
                     fill: false,
                     lineTension: 0.4,
                     backgroundColor: 'rgba(255, 255, 255, 1)',
-                    borderColor: 'rgba(61, 59, 59,1)',
+                    borderColor: this.props.color2,
                     borderCapStyle: 'butt',
                     borderDash: [],
                     borderDashOffset: 0.0,
                     borderJoinStyle: 'miter',
-                    pointBorderColor: 'rgba(61, 59, 59,1)',
-                    pointBackgroundColor: 'rgba(61, 59, 59,1)',
+                    pointBorderColor: this.props.color2,
+                    pointBackgroundColor: this.props.color2,
                     pointBorderWidth: 1,
                     pointHoverRadius: 5,
-                    pointHoverBackgroundColor: 'rgba(61, 59, 59,1)',
-                    pointHoverBorderColor: 'rgba(61, 59, 59,1)',
+                    pointHoverBackgroundColor: this.props.color2,
+                    pointHoverBorderColor: this.props.color2,
                     pointHoverBorderWidth: 2,
                     pointRadius: 1,
                     pointHitRadius: 10,
                     color: 'rgba(255,255,255,1)',
-                    data: this.props.deaths,
-
-                },
-                {
-                    label: 'Number of Recovered Patients over the date',
-                    fill: false,
-                    lineTension: 0.4,
-                    backgroundColor: 'rgba(6, 153, 50,1)',
-                    borderColor: 'rgba(6, 153, 50,1)',
-                    borderCapStyle: 'butt',
-                    borderDash: [],
-                    borderDashOffset: 0.0,
-                    borderJoinStyle: 'miter',
-                    pointBorderColor: 'rgba(6, 153, 50,1)',
-                    pointBackgroundColor: 'rgba(6, 153, 50,1)',
-                    pointBorderWidth: 1,
-                    pointHoverRadius: 5,
-                    pointHoverBackgroundColor: 'rgba(6, 153, 50,1)',
-                    pointHoverBorderColor: 'rgba(6, 153, 50,1)',
-                    pointHoverBorderWidth: 2,
-                    pointRadius: 1,
-                    pointHitRadius: 10,
-                    color: 'rgba(255,255,255,1)',
-                    data: this.props.recovered,
+                    data: this.props.data2,
 
                 }
             ],
@@ -143,13 +120,14 @@ class AllInOne extends Component {
 
         return (
             <div>
-                <div className="small-box bg-light text-light">
+                <div className="small-box bg-light text-light" style={{ height: '50vh' }}>
 
                     <Line data={data} options={options} />
                 </div>
             </div >
         );
     }
+
 }
 
-export default AllInOne;
+export default TwoDataGraph;

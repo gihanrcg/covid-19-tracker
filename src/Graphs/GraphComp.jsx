@@ -77,15 +77,22 @@ class GraphComp extends Component {
     }
 
     fetchCountryCode = (i) => {
-        fetch(`https://restcountries.eu/rest/v2/name/${i}`)
-            .then(response => response.json())
-            .then(response => {
-                this.setState({
-                    countryName: i,
-                    countryCode: response[0].alpha2Code
-                });
-            })
-            .catch((error) => console.log('Something went wrong...', error));
+        if (i === 'India') {
+            this.setState({
+                countryName: i,
+                countryCode: 'IN'
+            });
+        } else {
+            fetch(`https://restcountries.eu/rest/v2/name/${i}`)
+                .then(response => response.json())
+                .then(response => {
+                    this.setState({
+                        countryName: i,
+                        countryCode: response[0].alpha2Code
+                    });
+                })
+                .catch((error) => console.log('Something went wrong...', error));
+        }
     }
 
     setCountryNames = () => {
@@ -155,8 +162,8 @@ class GraphComp extends Component {
                     (this.state.selectedCountry != null) && (
                         <div>
                             <br />
-                            <AllInOne countryCode={this.state.countryCode} labels={this.state.labels} cases={this.state.cases} deaths={this.state.deaths} recovered={this.state.recovered} />
-                            <Paper style={{ marginTop: 20 }} />
+                            {/* <AllInOne countryCode={this.state.countryCode} labels={this.state.labels} cases={this.state.cases} deaths={this.state.deaths} recovered={this.state.recovered} />
+                            <Paper style={{ marginTop: 20 }} /> */}
                             <GraphOfCases DcountryCode={this.state.countryCode} labels={this.state.labels} cases={this.state.cases} />
                             <Paper style={{ marginTop: 20 }} />
                             <GraphOfDeaths countryCode={this.state.countryCode} labels={this.state.labels} cases={this.state.deaths} />

@@ -11,6 +11,7 @@ import GraphComp from '../Graphs/GraphComp'
 import OtherDashboardItems from './OtherDashboardItems'
 import NewsPage from '../other/NewsPage'
 import SriLankaMap from '../Maps/SriLankaMap'
+import DataComparison from '../Graphs/DataComparison'
 import {
   Container,
   Paper,
@@ -113,6 +114,9 @@ function Dashboard() {
             </Route>
             <Route path="/map">
               <SriLankaMap />
+            </Route>
+            <Route path="/compare">
+              <DataComparison />
             </Route>
             <Route path="/">
               {stats.hospitalData.length > 0 ? (

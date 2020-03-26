@@ -3,7 +3,7 @@ import React from 'react';
 function Navbar() {
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark" style={{ position: 'sticky', top: 0 , zIndex:'1000'}}>
       <a className="navbar-brand" href="/">Statistics of COVID-19</a>
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon text-light" />
@@ -24,6 +24,9 @@ function Navbar() {
           </li>
           <li className="nav-item active">
             <a className="nav-link text-light" href="/other">Other Countries <span className="sr-only"></span></a>
+          </li>
+          <li className="nav-item active">
+            <a className="nav-link text-light" href="/compare">Country Comparison <span className="sr-only"></span></a>
           </li>
           <li className="nav-item active">
             <a className="nav-link text-light" href="/graph">Time-series Data Curve <span className="sr-only"></span></a>
