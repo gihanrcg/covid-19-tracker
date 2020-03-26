@@ -36,6 +36,8 @@ class GraphComp extends Component {
     }
 
 
+
+
     setData = (country) => {
 
         let labels = [];
@@ -70,14 +72,16 @@ class GraphComp extends Component {
     selectChangeHandle = (val) => {
 
         this.getCountryValues(val);
-        
+        this.fetchCountryCode(val.value)
+
     }
 
     fetchCountryCode = (i) => {
-        fetch(`https://restcountries.eu/rest/v2/name/${this.state.countries[i].country}`)
+        fetch(`https://restcountries.eu/rest/v2/name/${i}`)
             .then(response => response.json())
             .then(response => {
                 this.setState({
+                    countryName: i,
                     countryCode: response[0].alpha2Code
                 });
             })
@@ -120,15 +124,40 @@ class GraphComp extends Component {
                 <Select options={this.state.countryNames}
                     onChange={opt => this.selectChangeHandle(opt)} />
 
+                <Paper style={{ marginTop: 20 }} />
+                {
+                    (this.state.countryCode != null) && (
+
+                        <div className="small-box bg-light">
+                            <div className="row text-center">
+                                <div className="col">
+                                    <img alt="" width="80px" src={`https://www.countryflags.io/${this.state.countryCode}/flat/64.png`} />
+                                </div>
+
+                            </div>
+                            <div className="row text-center">
+                                <div className="col"><h3>{this.state.countryName}</h3></div>
+
+                            </div>
+
+                            <br />
+
+                        </div>
+
+
+                    )
+
+                }
+
 
                 {
 
                     (this.state.selectedCountry != null) && (
                         <div>
                             <br />
-                            <AllInOne countryCode={this.state.countryCode} labels={this.state.labels} cases={this.state.cases} deaths={this.state.deaths} recovered={this.state.recovered}  />
+                            <AllInOne countryCode={this.state.countryCode} labels={this.state.labels} cases={this.state.cases} deaths={this.state.deaths} recovered={this.state.recovered} />
                             <Paper style={{ marginTop: 20 }} />
-                            <GraphOfCases DcountryCode={this.state.countryCode} labels={this.state.labels} cases={this.state.cases}/>
+                            <GraphOfCases DcountryCode={this.state.countryCode} labels={this.state.labels} cases={this.state.cases} />
                             <Paper style={{ marginTop: 20 }} />
                             <GraphOfDeaths countryCode={this.state.countryCode} labels={this.state.labels} cases={this.state.deaths} />
                             <Paper style={{ marginTop: 20 }} />
