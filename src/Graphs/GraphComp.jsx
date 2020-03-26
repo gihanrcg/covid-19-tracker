@@ -3,6 +3,7 @@ import Select from 'react-select';
 import GraphOfCases from './GraphOfCases'
 import GraphOfDeaths from './GraphOfDeaths'
 import GraphOfRecover from './GraphOfRecover'
+import AllInOne from './AllInOne'
 import {
     Paper
 } from '@material-ui/core';
@@ -108,7 +109,7 @@ class GraphComp extends Component {
                         <div data-toggle="tooltip" data-placement="top" title={'a'} className={`small-box bg-white   `}>
                             <div className="inner text-center">
                                 <h6 className="text-center">Source</h6>
-                                <p className="text-center"> The values displayed here are collected and distributed publicly by <a href="https://corona.lmao.ninja">https://corona.lmao.ninja</a></p>
+                                <p className="text-center"> The values displayed here are collected and distributed publicly by <a href="https://pomber.github.io/covid19">https://pomber.github.io/covid19</a></p>
                             </div>
 
                             <p className="small-box-footer text-danger">Consider these values as approximate values</p>
@@ -125,7 +126,9 @@ class GraphComp extends Component {
                     (this.state.selectedCountry != null) && (
                         <div>
                             <br />
-                            <GraphOfCases countryCode={this.state.countryCode} labels={this.state.labels} cases={this.state.cases} />
+                            <AllInOne countryCode={this.state.countryCode} labels={this.state.labels} cases={this.state.cases} deaths={this.state.deaths} recovered={this.state.recovered}  />
+                            <Paper style={{ marginTop: 20 }} />
+                            <GraphOfCases DcountryCode={this.state.countryCode} labels={this.state.labels} cases={this.state.cases}/>
                             <Paper style={{ marginTop: 20 }} />
                             <GraphOfDeaths countryCode={this.state.countryCode} labels={this.state.labels} cases={this.state.deaths} />
                             <Paper style={{ marginTop: 20 }} />
