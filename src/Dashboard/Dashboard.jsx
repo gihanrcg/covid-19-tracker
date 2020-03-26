@@ -10,6 +10,7 @@ import CountryComp from '../OtherCountries/CountryComp';
 import GraphComp from '../Graphs/GraphComp'
 import OtherDashboardItems from './OtherDashboardItems'
 import NewsPage from '../other/NewsPage'
+import SriLankaMap from '../Maps/SriLankaMap'
 import {
   Container,
   Paper,
@@ -109,6 +110,9 @@ function Dashboard() {
             </Route>
             <Route path="/news">
               <NewsPage />
+            </Route>
+            <Route path="/map">
+              <SriLankaMap />
             </Route>
             <Route path="/">
               {stats.hospitalData.length > 0 ? (
